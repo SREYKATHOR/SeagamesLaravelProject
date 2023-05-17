@@ -64,7 +64,7 @@ class SportController extends Controller
     {
         $sport = Sport::find($id);
         $sport->destroy();
-        return response()->json(['message'=>'delete success']);
+        return response()->json(['message'=>'delete success'],200);
 
     }
 }

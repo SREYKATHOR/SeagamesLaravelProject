@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->integer('total_ticket');
             $table->unsignedBigInteger('sport_id');
             $table->foreign('sport_id')
                     ->references('id')

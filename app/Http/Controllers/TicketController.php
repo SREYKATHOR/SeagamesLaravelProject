@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TicketController extends Controller
 {
@@ -20,7 +22,24 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'event_id'=>"required"
+        ]);
+        if ($validator->fails()){
+            return $validator->errors();
+        }
+        $event = Event::find(request('event_id'));
+        if ($event->total_ticket <=0){
+            return response()->json(['message'=>'Ticket is sold out'],200);
+        }
+        
+        $booking = Ticket::create($validator->validate());
+        $event->update([
+            'total_ticket'=>$event['total_ticket'] -1
+        ]);
+        return response()->json(['message'=>'Booking successfully!','data'=>$booking['date']],200);
+    
+
     }
 
     /**
