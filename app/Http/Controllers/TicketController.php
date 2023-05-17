@@ -37,7 +37,7 @@ class TicketController extends Controller
         $event->update([
             'total_ticket'=>$event['total_ticket'] -1
         ]);
-        return response()->json(['message'=>'Booking successfully!','data'=>$booking['date']],200);
+        return response()->json(['message'=>'Booking successfully!'],200);
     
 
     }

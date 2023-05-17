@@ -56,8 +56,8 @@ Route::delete('/competitions/{id}',[CompetitionController::class,'destroy']);
 Route::get('/getAllCompetitionById/{id}',[CompetitionController::class,'getAllCompetitionById']);
 // -------------list down all events -----------------
 Route::get('/getAllEvents',[EventController::class,'getAllEvents']);
-Route::get('/searchEvent/{name_sport}/',[EventController::class,'searchEvent']);
-Route::get('/detailEvent/{id}/',[EventController::class,'detailEvent']);
+Route::get('/searchEvent/{name_sport}',[EventController::class,'searchEvent']);
+Route::get('/detailEvent/{id}',[EventController::class,'detailEvent']);
 
 // ---------------booking ticket -----------------
 Route::resource('buyticket', TicketController::class);

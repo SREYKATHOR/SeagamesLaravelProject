@@ -76,10 +76,6 @@ class EventController extends Controller
         
     }
 
-    public function getAllEvents(){
-        $events = Event::with('sport', 'stadia')->get(); 
-    return response()->json(['message' => 'success', 'data' => $events], 200);
-    }
 
     public function searchEvent($name_sport){
         $event = Event::leftJoin('competitions','events.id','=','competitions.event_id')
